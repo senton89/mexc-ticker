@@ -37,7 +37,6 @@ func (a *Aggregator) Run(ctx context.Context, in <-chan model.Trade, out chan<- 
 				for _, c := range open {
 					out <- *c
 				}
-
 				return nil
 			}
 			if c, closed := apply(open, t, a.log); closed {
