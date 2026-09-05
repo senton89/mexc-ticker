@@ -99,7 +99,7 @@ func (s *Server) handleCandles(w http.ResponseWriter, r *http.Request) {
 	out := make([]candleDTO, 0, len(candles))
 	for _, c := range candles {
 		out = append(out, candleDTO{
-			Symbol: c.Symbol, Start: c.Start,
+			Symbol: c.Symbol, Start: c.Start.UTC(),
 			Open: c.Open, High: c.High, Low: c.Low, Close: c.Close,
 			Volume: c.Volume,
 		})

@@ -78,6 +78,9 @@ func (c *Client) pollLoop(ctx context.Context, symbol string, out chan<- model.T
 		case <-ticker.C:
 			raws, err := c.poll(ctx, symbol)
 			if err != nil {
+				if ctx.Err() != nil {
+					return // отмена контекста — штатная остановка, не ошибка опроса
+				}
 				c.log.Warn("poll failed", "symbol", symbol, "err", err)
 				continue
 			}
