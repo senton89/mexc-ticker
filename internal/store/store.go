@@ -125,3 +125,8 @@ func (s *Store) QueryCandles(ctx context.Context, symbol string, from, to time.T
 	}
 	return out, nil
 }
+
+// Ping проверяет доступность БД (для /healthz).
+func (s *Store) Ping(ctx context.Context) error {
+	return s.pool.Ping(ctx)
+}

@@ -23,10 +23,10 @@ type Config struct {
 // Load читает env, подставляет значения по умолчанию и валидирует.
 func Load() (Config, error) {
 	cfg := Config{
-		Symbols:       splitCSV(getenv("SYMBOLS", "BTCUSDT,ETHUSDT")),
-		DatabaseURL:   os.Getenv("DATABASE_URL"),
-		HTTPAddr:      getenv("HTTP_ADDR", ":8080"),
-		MEXCBaseURL:   getenv("MEXC_BASE_URL", "https://api.mexc.com"),
+		Symbols:     splitCSV(getenv("SYMBOLS", "BTCUSDT,ETHUSDT")),
+		DatabaseURL: os.Getenv("DATABASE_URL"),
+		HTTPAddr:    getenv("HTTP_ADDR", ":8080"),
+		MEXCBaseURL: getenv("MEXC_BASE_URL", "https://api.mexc.com"),
 	}
 
 	var err error
